@@ -1,6 +1,11 @@
 plugins {
+    application
     id("java")
     id("com.github.ben-manes.versions") version "0.39.0"
+}
+
+application {
+    mainClass = "hexlet.code.App"
 }
 
 group = "hexlet.code"
