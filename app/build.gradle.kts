@@ -21,9 +21,7 @@ dependencies {
 
     implementation("info.picocli:picocli:4.7.7")
 
-    //<groupId>com.fasterxml.jackson.core</groupId>
-    //<artifactId>jackson-databind</artifactId>
-    //<version>2.17.2</version>
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.17.2")
 }
 
 tasks.test {
