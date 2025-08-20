@@ -12,21 +12,23 @@ import java.util.concurrent.Callable;
 public class App implements Callable<Integer> {
 
     @Parameters(index = "0", description = "path to first file")
-    private String filepath1 = "src/main/java/hexlet/code/files/file1.json";
+    private String filepath1;
 
     @Parameters(index = "1", description = "path to second file")
-    private String filepath2 = "src/main/java/hexlet/code/files/file2.json";
+    private String filepath2;
 
     @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
     private String format = "stylish";
 
     //./build/install/app/bin/app src/main/java/hexlet/code/files/file1.json src/main/java/hexlet/code/files/file2.json
     //./build/install/app/bin/app src/main/java/hexlet/code/files/file1.yaml src/main/java/hexlet/code/files/file2.yaml
+    //./build/install/app/bin/app src/main/java/hexlet/code/files/file11.json src/main/java/hexlet/code/files/file22.json
+    //./build/install/app/bin/app src/main/java/hexlet/code/files/file11.yaml src/main/java/hexlet/code/files/file22.yaml
     @Override
     public Integer call() throws Exception { //./build/install/app/bin/app filepath1.json filepath2.json
         try {
             String diff = Differ.generate(filepath1, filepath2);
-            System.out.println(diff);
+            System.out.println(diff); //это форматор?
         } catch (Exception e) {
             System.err.println(e.getMessage());
             return 1; //ошибка.

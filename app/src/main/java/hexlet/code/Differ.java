@@ -26,21 +26,24 @@ public class Differ {
         while (!sortedMap1.isEmpty() && !sortedMap2.isEmpty()) { //должен пересчитываться.
             var entry1 = sortedMap1.firstEntry();
             var entry2 = sortedMap2.firstEntry();
+            String value1 = entry1.getValue() == null ? "null" : entry1.getValue().toString();
+            String value2 = entry2.getValue() == null ? "null" : entry2.getValue().toString();
+
             if ((entry1.getKey()).equals(entry2.getKey())) {  //имеется ли такой же ключ?
-                if ((entry1.getValue()).equals(entry2.getValue())) {
-                    answer.append("\n   " + entry1.getKey() + ": " + entry1.getValue());
+                if (value1.equals(value2)) {
+                    answer.append("\n   " + entry1.getKey() + ": " + value1);
                 } else {
-                    answer.append("\n - " + entry1.getKey() + ": " + entry1.getValue());
-                    answer.append("\n + " + entry2.getKey() + ": " + entry2.getValue());
+                    answer.append("\n - " + entry1.getKey() + ": " + value1);
+                    answer.append("\n + " + entry2.getKey() + ": " + value2);
                 }
                 sortedMap1.remove(entry1.getKey()); //удаление первого в этом случае (оптимальный ли метод?)
                 sortedMap2.remove(entry2.getKey());
             } else {
                 if ((entry1.getKey()).compareTo(entry2.getKey()) < 0) { //1  до 2 (то есть выше).
-                    answer.append("\n - " + entry1.getKey() + ": " + entry1.getValue());
+                    answer.append("\n - " + entry1.getKey() + ": " + value1);
                     sortedMap1.remove(entry1.getKey());
                 } else {
-                    answer.append("\n + " + entry2.getKey() + ": " + entry2.getValue());
+                    answer.append("\n + " + entry2.getKey() + ": " + value2);
                     sortedMap2.remove(entry2.getKey());
                 }
             }
@@ -49,11 +52,13 @@ public class Differ {
         if (!sortedMap1.isEmpty() || !sortedMap2.isEmpty()) {
             while (!sortedMap1.isEmpty()) {
                 var entry1 = sortedMap1.pollFirstEntry();
-                answer.append("\n + " + entry1.getKey() + ": " + entry1.getValue());
+                String value1 = entry1.getValue() == null ? "null" : entry1.getValue().toString();
+                answer.append("\n + " + entry1.getKey() + ": " + value1);
             }
             while (!sortedMap2.isEmpty()) {
                 var entry2 = sortedMap2.pollFirstEntry();
-                answer.append("\n + " + entry2.getKey() + ": " + entry2.getValue());
+                String value2 = entry2.getValue() == null ? "null" : entry2.getValue().toString();
+                answer.append("\n + " + entry2.getKey() + ": " + value2);
             }
         }
         answer.append("\n }");

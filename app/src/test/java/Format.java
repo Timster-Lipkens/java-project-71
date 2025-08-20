@@ -11,14 +11,14 @@ public class Format {
     public void json() throws Exception {
         var actual = Differ.generate("src/main/java/hexlet/code/files/file1.json",
                 "src/main/java/hexlet/code/files/file2.json");
-        var expected = Files.readString(Paths.get("src/test/resources/file")).trim(); //То что нужно?
+        var expected = Files.readString(Paths.get("src/test/resources/file12")).trim(); //То что нужно?
         assertEquals(expected, actual);
     }
     @Test
     public void yaml() throws Exception {
         var actual = Differ.generate("src/main/java/hexlet/code/files/file1.yaml",
                 "src/main/java/hexlet/code/files/file2.yaml");
-        var expected = Files.readString(Paths.get("src/test/resources/file")).trim(); //То что нужно?
+        var expected = Files.readString(Paths.get("src/test/resources/file12")).trim(); //То что нужно?
         assertEquals(expected, actual);
     }
 }
