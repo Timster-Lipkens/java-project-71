@@ -21,6 +21,7 @@ public class App implements Callable<Integer> {
     private String format = "stylish";
 
     //./build/install/app/bin/app src/main/java/hexlet/code/files/file1.json src/main/java/hexlet/code/files/file2.json
+    //./build/install/app/bin/app src/main/java/hexlet/code/files/file1.yaml src/main/java/hexlet/code/files/file2.yaml
     @Override
     public Integer call() throws Exception { //./build/install/app/bin/app filepath1.json filepath2.json
         try {
