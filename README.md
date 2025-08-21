@@ -1,5 +1,5 @@
 ### Content:
-This project is..
+This project is Differ. It calculates the difference between two files: json or yaml format. It also allows you to output the difference in three formats: stylish, plain, json.
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Timster-Lipkens/java-project-71/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Timster-Lipkens/java-project-71/actions)
@@ -24,6 +24,8 @@ This project is..
 [![Duplicated Lines (%)]
 
 ### asciinema:
-https://asciinema.org/a/VrJzIXVZ1xYSb6ZeFLptJIR74
-https://asciinema.org/a/t84hugO2cgeRcckKxe5JNjEw8
-https://asciinema.org/a/mEVdYypPZUSuBYI2ORVpjcmnr
+stylish (json): https://asciinema.org/a/VrJzIXVZ1xYSb6ZeFLptJIR74
+stylish (yaml): https://asciinema.org/a/t84hugO2cgeRcckKxe5JNjEw8
+stylish (recursion): https://asciinema.org/a/mEVdYypPZUSuBYI2ORVpjcmnr
+plain:
+json:
