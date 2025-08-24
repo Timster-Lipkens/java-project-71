@@ -12,16 +12,8 @@ This project is Differ. It calculates the difference between two files: json or 
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Timster-Lipkens_java-project-71&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Timster-Lipkens_java-project-71)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Timster-Lipkens_java-project-71&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=Timster-Lipkens_java-project-71)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=Timster-Lipkens_java-project-71&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=Timster-Lipkens_java-project-71)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=Timster-Lipkens_java-project-71&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=Timster-Lipkens_java-project-71)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Timster-Lipkens_java-project-71&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Timster-Lipkens_java-project-71)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Timster-Lipkens_java-project-71&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Timster-Lipkens_java-project-71)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Timster-Lipkens_java-project-71&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Timster-Lipkens_java-project-71)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Timster-Lipkens_java-project-71&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Timster-Lipkens_java-project-71)
 
-[![Maintainability Rating]
-[![Bugs]
-[![Code Smells]
-[![Duplicated Lines (%)]
 
 ### asciinema:
 stylish (json): https://asciinema.org/a/VrJzIXVZ1xYSb6ZeFLptJIR74

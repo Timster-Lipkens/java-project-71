@@ -1,9 +1,8 @@
 plugins {
     application
-    id("java")
     id("com.github.ben-manes.versions") version "0.39.0"
 
-    checkstyle //всё равно не работает от перемены места
+    checkstyle
     id("org.sonarqube") version "6.2.0.5505"
     jacoco //нужно ещё что-то?
 }

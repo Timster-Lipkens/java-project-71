@@ -6,8 +6,14 @@ public class Plain {
 
     public static String format(LinkedHashMap<String, Object> resultMap) {
         for (String key : resultMap.keySet()) {
-            if (key.charAt(0) == '[' || key.charAt(0) == '{') {
+            var value = resultMap.get(key);
+            char value0 = value.toString().charAt(0);
+            if (value0 == '[' || value0 == '{' || value0 == '-') { //специфика json и yaml
                 resultMap.put(key, "[complex value]");
+            } else {
+                if (value instanceof String && !value.equals("null")) { //специфика plain
+                    resultMap.put(key, "'" + value + "'");
+                }
             }
         }
         var answer = new StringBuilder();
@@ -18,7 +24,7 @@ public class Plain {
             if (!link) { //нет связи
                 if (key.charAt(0) == '+') { //чистая добавка
                     answer.append("Property '" + key.substring(2)
-                            + "' was added with value: '" + resultMap.get(key) + "'\n");
+                            + "' was added with value: " + resultMap.get(key) + "\n");
                 }
                 if (key.charAt(0) == '-') { //подозрение на связь
                     link = true;
@@ -34,11 +40,15 @@ public class Plain {
                 } else {
                     answer.append("Property '" + key0 + "' was removed\n"); //подозрение не оправдалось
                     if (key.charAt(0) != '-') {
-                        link = false;
+                        link = false; //не продолжаем проверки
+                        if (key.charAt(0) == '+') {
+                            answer.append("Property '" + key.substring(2)
+                                    + "' was added with value: " + resultMap.get(key) + "\n");
+                        }
                     }
                 }
             }
-        }
+        } //гигантский цикл ради фиксации обновлений..
         return answer.toString();
     }
 

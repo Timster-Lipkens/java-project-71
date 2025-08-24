@@ -21,11 +21,14 @@ public class App implements Callable<Integer> {
     private String format = "stylish";
 
     //Вводные для запуска и тестирования: //более короткий make run-dist не понимает параметров..
+    //./build/install/app/bin/app src/main/java/hexlet/code/files/fileI.json src/main/java/hexlet/code/files/fileII.json
+    //./build/install/app/bin/app src/main/java/hexlet/code/files/fileI.yaml src/main/java/hexlet/code/files/fileII.yaml
     //./build/install/app/bin/app src/main/java/hexlet/code/files/file1.json src/main/java/hexlet/code/files/file2.json
     //./build/install/app/bin/app src/main/java/hexlet/code/files/file1.yaml src/main/java/hexlet/code/files/file2.yaml
-//./build/install/app/bin/app src/main/java/hexlet/code/files/file11.json src/main/java/hexlet/code/files/file22.json
-//./build/install/app/bin/app src/main/java/hexlet/code/files/file11.yaml src/main/java/hexlet/code/files/file22.yaml
-    //./build/install/app/bin/app -f pain
+//./build/install/app/bin/app -f plain src/main/java/hexlet/code/files/file1.json src/main/java/hexlet/code/files/file2.
+//./build/install/app/bin/app -f plain src/main/java/hexlet/code/files/file1.yaml src/main/java/hexlet/code/files/file2.
+//./build/install/app/bin/app -f json src/main/java/hexlet/code/files/file1.json src/main/java/hexlet/code/files/file2.
+//./build/install/app/bin/app -f json src/main/java/hexlet/code/files/file1.yaml src/main/java/hexlet/code/files/file2.
     @Override
     public Integer call() throws Exception { //./build/install/app/bin/app filepath1.json filepath2.json
         try {
