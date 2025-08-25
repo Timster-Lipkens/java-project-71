@@ -49,7 +49,7 @@ public class Plain {
                 }
             }
         } //гигантский цикл ради фиксации обновлений..
-        return answer.toString();
+        return answer.toString().trim(); //trim() обрежет финальную строку?
     }
 
 }
