@@ -15,7 +15,7 @@ sonar {
     properties {
         property("sonar.projectKey", "Timster-Lipkens_java-project-71")
         property("sonar.organization", "timster-lipkens")
-        property("sonar.host.url", "https://sonarcloud.io")
+        //property("sonar.host.url", "https://sonarcloud.io") //как это ранее сюда попало?
     }
 }
 

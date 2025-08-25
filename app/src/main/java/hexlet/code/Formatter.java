@@ -16,7 +16,7 @@ public class Formatter {
             case "json":
                 return Json.format(resultMap);
             default:
-                throw new Error("Format not supported"); //Error?
+                throw new RuntimeException("Format not supported: " + format); //Error?
         }
     }
 }

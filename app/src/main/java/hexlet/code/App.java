@@ -17,8 +17,8 @@ public class App implements Callable<Integer> {
     @Parameters(index = "1", description = "path to second file")
     private String filepath2;
 
-    @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
-    private String format = "stylish";
+    @Option(names = {"-f", "--format"}, defaultValue = "stylish", description = "output format [default: stylish]")
+    private String format; //чем лучше просто private String format = "stylish"; ?
 
     //Вводные для запуска и тестирования: //более короткий make run-dist не понимает параметров..
     //./build/install/app/bin/app src/main/java/hexlet/code/files/fileI.json src/main/java/hexlet/code/files/fileII.json
