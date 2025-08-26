@@ -1,55 +1,53 @@
 package hexlet.code.formatters;
 
-import java.util.LinkedHashMap;
+import hexlet.code.Status;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+import static hexlet.code.Status.UNCHANGED; //ужас сколько малоосмысленного импорта
+import static hexlet.code.Status.DELETED;
+import static hexlet.code.Status.ADDED;
+import static hexlet.code.Status.CHANGED;
 
 public class Plain {
 
-    public static String format(LinkedHashMap<String, Object> resultMap) {
-        for (String key : resultMap.keySet()) {
-            var value = resultMap.get(key);
-            char value0 = value.toString().charAt(0);
-            if (value0 == '[' || value0 == '{' || value0 == '-') { //специфика json и yaml
-                resultMap.put(key, "[complex value]");
-            } else {
-                if (value instanceof String && !value.equals("null")) { //специфика plain
-                    resultMap.put(key, "'" + value + "'");
-                }
+    public static String format(LinkedList<Status> resultMap) {
+        var answer = new StringBuilder();
+        for (Status status : resultMap) { //тут Статус должен помочь
+            int name = status.getStatusName();
+            switch (status.getStatusName()) {
+                case UNCHANGED:
+                    break;
+                case DELETED:
+                    answer.append("Property '" + status.getMapKey() + "' was removed\n");
+                    break;
+                case ADDED:
+                    answer.append("Property '" + status.getMapKey() + "' was added with value: "
+                            + stringify(status.getNewValue()) + "\n");
+                    break;
+                case CHANGED:
+                    answer.append("Property '" + status.getMapKey() + "' was updated. From "
+                            + stringify(status.getOldValue()) + " to " + stringify(status.getNewValue()) + "\n");
+                    break;
+                default:
+                    throw new RuntimeException("Error in statusName: " + name); //не нужен
             }
         }
-        var answer = new StringBuilder();
-        boolean link = false; //прошлое значение отрицательное (подозрение на связь)
-        String past = null; //сохранение прошлого ключа в таком случае
+        return answer.toString().trim(); // обрезка лишнего переноса
+    }
 
-        for (String key : resultMap.keySet()) { //проблема лишней пустой строки в конце
-            if (!link) { //нет связи
-                if (key.charAt(0) == '+') { //чистая добавка
-                    answer.append("Property '" + key.substring(2)
-                            + "' was added with value: " + resultMap.get(key) + "\n");
-                }
-                if (key.charAt(0) == '-') { //подозрение на связь
-                    link = true;
-                    past = key;
-                }
-                //в случае ни плюса ни минуса - ничего по формату
-            } else {
-                String key0 = past.substring(2);
-                if (key0.equals(key.substring(2))) { //подозрение оказалось верным - обновление
-                    answer.append("Property '" + key0 + "' was updated. From "
-                            + resultMap.get(past) + " to " + resultMap.get(key) + "\n");
-                    link = false;
-                } else {
-                    answer.append("Property '" + key0 + "' was removed\n"); //подозрение не оправдалось
-                    if (key.charAt(0) != '-') {
-                        link = false; //не продолжаем проверки
-                        if (key.charAt(0) == '+') {
-                            answer.append("Property '" + key.substring(2)
-                                    + "' was added with value: " + resultMap.get(key) + "\n");
-                        }
-                    }
-                }
-            }
-        } //гигантский цикл ради фиксации обновлений..
-        return answer.toString().trim(); //trim() обрежет финальную строку?
+    private static String stringify(Object value) {
+        if (value.equals("null")) {
+            return "null";
+        }
+        if (value instanceof String) {
+            return "'" + value + "'";
+        }
+        if (value instanceof Map || value instanceof List) {
+            return "[complex value]";
+        }
+        return value.toString();
     }
 
 }

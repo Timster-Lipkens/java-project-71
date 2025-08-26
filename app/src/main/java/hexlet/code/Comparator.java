@@ -1,34 +1,42 @@
 package hexlet.code;
 
-import java.util.LinkedHashMap;
 import java.util.TreeMap;
+import java.util.LinkedList;
+
+import static hexlet.code.Status.UNCHANGED; //ужас сколько малоосмысленного импорта
+import static hexlet.code.Status.DELETED;
+import static hexlet.code.Status.ADDED;
+import static hexlet.code.Status.CHANGED;
 
 public class Comparator {
 
-    public static void analyzeData(TreeMap<String, Object> sortedMap1, TreeMap<String, Object> sortedMap2,
-                                   LinkedHashMap<String, Object> resultMap) { //обрабатывает без возвращения
-        while (!sortedMap1.isEmpty() && !sortedMap2.isEmpty()) { //должен пересчитываться.
+    public static LinkedList<Status> analyzeData(TreeMap<String, Object> sortedMap1,
+                                                 TreeMap<String, Object> sortedMap2) {
+        var resultMap = new LinkedList<Status>();
+
+        while (!sortedMap1.isEmpty() && !sortedMap2.isEmpty()) { //должен пересчитываться. //просят Status
             var entry1 = sortedMap1.firstEntry();
             var entry2 = sortedMap2.firstEntry();
-            var value1 = entry1.getValue() == null ? "null" : entry1.getValue(); //пустоты в строки
-            var value2 = entry2.getValue() == null ? "null" : entry2.getValue(); //.toString()? equals()
+            var key1 = entry1.getKey();
+            var key2 = entry2.getKey();
+            var value1 = entry1.getValue() == null ? "null" : entry1.getValue(); //вечная пустота, null (не toString())
+            var value2 = entry2.getValue() == null ? "null" : entry2.getValue(); //иначе equals() не работает
 
-            if ((entry1.getKey()).equals(entry2.getKey())) {  //имеется ли такой же ключ?
+            if (key1.equals(key2)) {  //имеется ли такой же ключ?
                 if (value1.equals(value2)) {
-                    resultMap.put("  " + entry1.getKey(), value1);
+                    resultMap.add(new Status(UNCHANGED, key1, value1, value1)); //решил дублировать значения
                 } else {
-                    resultMap.put("- " + entry1.getKey(), value1);
-                    resultMap.put("+ " + entry2.getKey(), value2);
+                    resultMap.add(new Status(CHANGED, key1, value1, value2)); //ключи равны DELETED ADDED
                 }
-                sortedMap1.remove(entry1.getKey()); //удаление первого в этом случае (оптимальный ли метод?)
-                sortedMap2.remove(entry2.getKey());
+                sortedMap1.remove(key1); //удаление первого в этом случае (оптимальный ли метод?)
+                sortedMap2.remove(key2);
             } else {
-                if ((entry1.getKey()).compareTo(entry2.getKey()) < 0) { //1 до 2 (то есть ключ выше).
-                    resultMap.put("- " + entry1.getKey(), value1);
-                    sortedMap1.remove(entry1.getKey());
+                if (key1.compareTo(key2) < 0) { //1 до 2 (то есть ключ выше).
+                    resultMap.add(new Status(DELETED, key1, value1, null));
+                    sortedMap1.remove(key1);
                 } else {
-                    resultMap.put("+ " + entry2.getKey(), value2);
-                    sortedMap2.remove(entry2.getKey());
+                    resultMap.add(new Status(ADDED, key2, null, value2));
+                    sortedMap2.remove(key2);
                 }
             }
         }
@@ -36,15 +44,17 @@ public class Comparator {
         if (!sortedMap1.isEmpty() || !sortedMap2.isEmpty()) { //на случай разного количества элементов в файлах
             while (!sortedMap1.isEmpty()) {
                 var entry1 = sortedMap1.pollFirstEntry();
-                String value1 = entry1.getValue() == null ? "null" : entry1.getValue().toString(); //может выделить?
-                resultMap.put("+ " + entry1.getKey(), value1);
+                var value1 = entry1.getValue() == null ? "null" : entry1.getValue();
+                resultMap.add(new Status(ADDED, entry1.getKey(), null, value1));
             }
             while (!sortedMap2.isEmpty()) {
                 var entry2 = sortedMap2.pollFirstEntry();
-                String value2 = entry2.getValue() == null ? "null" : entry2.getValue().toString();
-                resultMap.put("+ " + entry2.getKey(), value2);
+                var value2 = entry2.getValue() == null ? "null" : entry2.getValue();
+                resultMap.add(new Status(DELETED, entry2.getKey(), value2, null));
             }
         }
+
+        return resultMap;
     }
 
 }

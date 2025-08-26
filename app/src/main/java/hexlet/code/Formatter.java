@@ -4,10 +4,10 @@ import hexlet.code.formatters.Json;
 import hexlet.code.formatters.Plain;
 import hexlet.code.formatters.Stylish;
 
-import java.util.LinkedHashMap;
+import java.util.LinkedList;
 
 public class Formatter {
-    public static Object choice(LinkedHashMap<String, Object> resultMap, String format) {
+    public static String choice(LinkedList<Status> resultMap, String format) {
         switch (format) {
             case "stylish":
                 return Stylish.format(resultMap);
@@ -16,7 +16,7 @@ public class Formatter {
             case "json":
                 return Json.format(resultMap);
             default:
-                throw new RuntimeException("Format not supported: " + format); //Error?
+                throw new RuntimeException("Format not supported: " + format); //почему не нужен throws Exception?
         }
     }
 }

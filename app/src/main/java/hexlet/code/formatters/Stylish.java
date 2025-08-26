@@ -1,15 +1,40 @@
 package hexlet.code.formatters;
 
-import java.util.LinkedHashMap;
+import hexlet.code.Status;
+import java.util.LinkedList;
+
+import static hexlet.code.Status.UNCHANGED; //ужас сколько малоосмысленного импорта
+import static hexlet.code.Status.DELETED;
+import static hexlet.code.Status.ADDED;
+import static hexlet.code.Status.CHANGED;
 
 public class Stylish {
-    public static String format(LinkedHashMap<String, Object> resultMap) {
+
+    public static String format(LinkedList<Status> resultMap) {
         var answer = new StringBuilder();
         answer.append("{");
-        for (String key : resultMap.keySet()) {
-            answer.append("\n  " + key + ": " + resultMap.get(key));
+        for (Status status : resultMap) { //тут статус максимально осложнил всё
+            int name = status.getStatusName();
+            switch (name) {
+                case UNCHANGED:
+                    answer.append("\n    " + status.getMapKey() + ": " + status.getOldValue());
+                    break;
+                case DELETED:
+                    answer.append("\n  - " + status.getMapKey() + ": " + status.getOldValue());
+                    break;
+                case ADDED:
+                    answer.append("\n  + " + status.getMapKey() + ": " + status.getNewValue());
+                    break;
+                case CHANGED:
+                    answer.append("\n  - " + status.getMapKey() + ": " + status.getOldValue());
+                    answer.append("\n  + " + status.getMapKey() + ": " + status.getNewValue());
+                    break;
+                default:
+                    throw new RuntimeException("Error in statusName: " + name); //не нужен
+            }
         }
         answer.append("\n}");
         return answer.toString();
     }
+
 }

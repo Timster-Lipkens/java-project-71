@@ -32,7 +32,7 @@ public class App implements Callable<Integer> {
     @Override
     public Integer call() throws Exception { //./build/install/app/bin/app filepath1.json filepath2.json
         try {
-            String diff = Differ.generate(filepath1, filepath2, format).toString(); //по-умолчанию вроде итак работает
+            String diff = Differ.generate(filepath1, filepath2, format);
             System.out.println(diff);
         } catch (Exception e) {
             System.err.println(e.getMessage());
