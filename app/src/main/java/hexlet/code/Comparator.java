@@ -50,7 +50,7 @@ public class Comparator {
             while (!sortedMap2.isEmpty()) {
                 var entry2 = sortedMap2.pollFirstEntry();
                 var value2 = entry2.getValue() == null ? "null" : entry2.getValue();
-                resultMap.add(new Status(DELETED, entry2.getKey(), value2, null));
+                resultMap.add(new Status(ADDED, entry2.getKey(), null, value2));
             }
         }
 
