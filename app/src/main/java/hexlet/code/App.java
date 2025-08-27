@@ -30,7 +30,7 @@ public class App implements Callable<Integer> {
 //./build/install/app/bin/app -f json src/main/java/hexlet/code/files/file1.json src/main/java/hexlet/code/files/file2.
 //./build/install/app/bin/app -f json src/main/java/hexlet/code/files/file1.yaml src/main/java/hexlet/code/files/file2.
     @Override
-    public Integer call() throws Exception { //./build/install/app/bin/app filepath1.json filepath2.json
+    public final Integer call() throws Exception { //./build/install/app/bin/app filepath1.json filepath2.json
         try {
             String diff = Differ.generate(filepath1, filepath2, format);
             System.out.println(diff);
@@ -45,9 +45,5 @@ public class App implements Callable<Integer> {
         int exitCode = new CommandLine(new App()).execute(args); //./build/install/app/bin/app -h
         System.exit(exitCode);
     }
-
-    //public static Map getData(String content) throws Exception { //упоминался метод, но непонятно зачем он
-        //return parse(content);
-    //}
 
 }
