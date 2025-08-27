@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import java.util.Map;
 import java.util.TreeMap;
 import java.util.LinkedList;
 
@@ -10,9 +11,11 @@ import static hexlet.code.Status.CHANGED;
 
 public class Comparator {
 
-    public static LinkedList<Status> analyzeData(TreeMap<String, Object> sortedMap1,
-                                                 TreeMap<String, Object> sortedMap2) {
-        var resultMap = new LinkedList<Status>();
+    public static LinkedList<Status> analyzeData(Map<String, Object> parserMap1,
+                                                 Map<String, Object> parserMap2) {
+        TreeMap<String, Object> sortedMap1 = new TreeMap<>(parserMap1); //авто-сортировка
+        TreeMap<String, Object> sortedMap2 = new TreeMap<>(parserMap2); //от дерева.
+        var resultMap = new LinkedList<Status>(); //может переназвать потом..
 
         while (!sortedMap1.isEmpty() && !sortedMap2.isEmpty()) { //должен пересчитываться. //просят Status
             var entry1 = sortedMap1.firstEntry();

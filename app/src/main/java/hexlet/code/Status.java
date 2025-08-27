@@ -24,7 +24,7 @@ public final class Status {
         newValue = newvalue;
     }
 
-    public int getStatusName() { //какие две связанные проблемы?
+    public int getStatusName() {
         return statusName;
     }
 

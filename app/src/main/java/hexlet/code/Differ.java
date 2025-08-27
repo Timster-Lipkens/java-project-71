@@ -5,7 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import java.util.TreeMap;
+import java.util.LinkedList;
+import java.util.Map;
 
 public class Differ {
 
@@ -15,9 +16,12 @@ public class Differ {
 
     public static String generate(String filepath1, String filepath2, String format) throws Exception {
         var type = filepath1.substring(filepath1.lastIndexOf('.') + 1); //должен совпадать с filepath2
-        TreeMap<String, Object> sortedMap1 = new TreeMap<>(Parser.getData(readData(filepath1), type)); //сортировка
-        TreeMap<String, Object> sortedMap2 = new TreeMap<>(Parser.getData(readData(filepath2), type)); //от дерева.
-        return Formatter.choice(Comparator.analyzeData(sortedMap1, sortedMap2), format); // может стоит разделить
+        String content1 = readData(filepath1); //более читабельно
+        String content2 = readData(filepath2); //но кажется из-за этого билд вместо 5 секунд теперь 10
+        Map<String, Object> parserMap1 = Parser.getData(content1, type);
+        Map<String, Object> parserMap2 = Parser.getData(content2, type);
+        LinkedList<Status> resultMap = Comparator.analyzeData(parserMap1, parserMap2);
+        return Formatter.choice(resultMap, format);
     }
 
     public static String readData(String filepath) throws Exception {
