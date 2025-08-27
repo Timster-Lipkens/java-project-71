@@ -16,8 +16,8 @@ This project is Differ. It calculates the difference between two files: json or 
 
 
 ### asciinema:
-stylish (json): https://asciinema.org/a/VrJzIXVZ1xYSb6ZeFLptJIR74
-stylish (yaml): https://asciinema.org/a/t84hugO2cgeRcckKxe5JNjEw8
-stylish (recursion): https://asciinema.org/a/mEVdYypPZUSuBYI2ORVpjcmnr
-plain:
-json:
+stylish (json): https://asciinema.org/a/x2e1hFTJokndHKeU0QU5AjAiT
+stylish (yaml): https://asciinema.org/a/AQCstfv8im4WcdH3XbfXMWgQv
+stylish (recursion): https://asciinema.org/a/EpDImWXjgTgwrdhtRiGURWP9l
+plain (recursion-json): https://asciinema.org/a/mmnTcx6damNe3GpFzuudgUwEL
+json (recursion-yaml): https://asciinema.org/a/2TG2EhWOjGtpjQNUNcDgaqUZU
