@@ -15,7 +15,7 @@ public class Plain {
     public static String format(LinkedList<Status> resultMap) {
         var answer = new StringBuilder();
         for (Status status : resultMap) { //тут Статус должен помочь
-            int name = status.getStatusName();
+            String name = status.getStatusName();
             switch (status.getStatusName()) {
                 case UNCHANGED:
                     break;

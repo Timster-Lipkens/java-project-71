@@ -14,7 +14,7 @@ public class Stylish {
         var answer = new StringBuilder();
         answer.append("{");
         for (Status status : resultMap) { //тут статус максимально осложнил всё
-            int name = status.getStatusName();
+            String name = status.getStatusName();
             switch (name) {
                 case UNCHANGED:
                     answer.append("\n    " + status.getMapKey() + ": " + status.getOldValue());

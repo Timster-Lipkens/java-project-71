@@ -7,24 +7,24 @@ package hexlet.code;
 //@Getter //проблема Градле?
 public final class Status {
     //зачем final?
-    public static final int UNCHANGED = 0; //можно упростить до двух boolean (~)
-    public static final int DELETED = -1;
-    public static final int ADDED = 1;
-    public static final int CHANGED = 10;
+    public static final String DELETED = "deleted"; //можно упростить до boolean или int
+    public static final String ADDED = "added";
+    public static final String CHANGED = "changed";
+    public static final String UNCHANGED = "unchanged";
 
-    private int statusName;
+    private String statusName;
     private String mapKey;
     private Object oldValue;
     private Object newValue;
 
-    Status(int statusname, String mapkey, Object oldvalue, Object newvalue) {
+    Status(String statusname, String mapkey, Object oldvalue, Object newvalue) {
         statusName = statusname; //this? хитро через малые буквы
         mapKey = mapkey;
         oldValue = oldvalue;
         newValue = newvalue;
     }
 
-    public int getStatusName() {
+    public String getStatusName() {
         return statusName;
     }
 

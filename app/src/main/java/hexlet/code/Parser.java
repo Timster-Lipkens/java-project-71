@@ -16,7 +16,7 @@ public class Parser {
                 return new ObjectMapper(new YAMLFactory())
                         .readValue(content, new TypeReference<Map<String, Object>>() { });
             default:
-                throw new RuntimeException("This file type not supported: " + type);
+                throw new RuntimeException("This type not supported: " + type);
         }
     }
 }

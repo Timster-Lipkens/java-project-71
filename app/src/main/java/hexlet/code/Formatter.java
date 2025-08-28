@@ -7,7 +7,7 @@ import hexlet.code.formatters.Stylish;
 import java.util.LinkedList;
 
 public class Formatter {
-    public static String choice(LinkedList<Status> resultMap, String format) {
+    public static String choice(LinkedList<Status> resultMap, String format) throws Exception {
         switch (format) {
             case "stylish":
                 return Stylish.format(resultMap);
