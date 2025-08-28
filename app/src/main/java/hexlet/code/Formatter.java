@@ -7,14 +7,14 @@ import hexlet.code.formatters.Stylish;
 import java.util.LinkedList;
 
 public class Formatter {
-    public static String choice(LinkedList<Status> resultMap, String format) throws Exception {
+    public static String choice(LinkedList<Status> statusList, String format) throws Exception {
         switch (format) {
             case "stylish":
-                return Stylish.format(resultMap);
+                return Stylish.format(statusList);
             case "plain":
-                return Plain.format(resultMap);
+                return Plain.format(statusList);
             case "json":
-                return Json.format(resultMap);
+                return Json.format(statusList);
             default:
                 throw new RuntimeException("Format not supported: " + format); //почему не нужен throws Exception?
         }

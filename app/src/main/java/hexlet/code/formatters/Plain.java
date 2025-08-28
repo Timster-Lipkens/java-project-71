@@ -12,9 +12,9 @@ import static hexlet.code.Status.CHANGED;
 
 public class Plain {
 
-    public static String format(LinkedList<Status> resultMap) {
+    public static String format(LinkedList<Status> statusList) {
         var answer = new StringBuilder();
-        for (Status status : resultMap) { //тут Статус должен помочь
+        for (Status status : statusList) { //тут Статус должен помочь
             String name = status.getStatusName();
             switch (status.getStatusName()) {
                 case UNCHANGED:
@@ -38,7 +38,7 @@ public class Plain {
     }
 
     private static String stringify(Object value) {
-        if (value.equals("null")) {
+        if (value == null) {
             return "null";
         }
         if (value instanceof String) {

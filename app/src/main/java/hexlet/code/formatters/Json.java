@@ -10,17 +10,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Json {
 
-    public static String format(LinkedList<Status> resultMap) throws Exception { //смысл если не json?
+    public static String format(LinkedList<Status> statusList) throws Exception { //смысл если не json?
         /*
-        LinkedHashMap<String, Object> resultMap0 = new LinkedHashMap<>();
+        LinkedHashMap<String, Object> resultMap = new LinkedHashMap<>();
         for (Status status : resultMap) {
             if (!status.getStatusName().equals(DELETED)) {
-                resultMap0.put(status.getMapKey(), status.getNewValue());
+                resultMap.put(status.getMapKey(), status.getNewValue());
             }
         }
-        return new ObjectMapper().valueToTree(resultMap0).toString();
+        return new ObjectMapper().valueToTree(resultMap).toString();
          */
-        return new ObjectMapper().writeValueAsString(resultMap); //нерабочий метод с артефактами Статуса
+        return new ObjectMapper().writeValueAsString(statusList); //рабочий метод для Хекслета, хотя с артефактами?
     } //Статус подломал прошлый лаконичный класс //хотя это выявило скрытые баги
 
 }

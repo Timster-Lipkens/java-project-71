@@ -20,8 +20,8 @@ public class Differ {
         String content2 = readData(filepath2); //но кажется из-за этого билд вместо 5 секунд теперь 10
         Map<String, Object> parserMap1 = Parser.getData(content1, type);
         Map<String, Object> parserMap2 = Parser.getData(content2, type);
-        LinkedList<Status> resultMap = Comparator.analyzeData(parserMap1, parserMap2);
-        return Formatter.choice(resultMap, format);
+        LinkedList<Status> statusList = Comparator.analyzeData(parserMap1, parserMap2);
+        return Formatter.choice(statusList, format);
     }
 
     public static String readData(String filepath) throws Exception {

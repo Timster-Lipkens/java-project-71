@@ -10,10 +10,10 @@ import static hexlet.code.Status.CHANGED;
 
 public class Stylish {
 
-    public static String format(LinkedList<Status> resultMap) {
+    public static String format(LinkedList<Status> statusList) {
         var answer = new StringBuilder();
         answer.append("{");
-        for (Status status : resultMap) { //тут статус максимально осложнил всё
+        for (Status status : statusList) { //тут статус максимально осложнил всё
             String name = status.getStatusName();
             switch (name) {
                 case UNCHANGED:
