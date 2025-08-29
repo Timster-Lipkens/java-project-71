@@ -6,6 +6,8 @@ This project is Differ. It calculates the difference between two files: json or 
 
 
 ### java-package:
+[![Java CI](https://github.com/Timster-Lipkens/java-project-71/actions/workflows/main.yml/badge.svg)](https://github.com/Timster-Lipkens/java-project-71/actions/workflows/main.yml)
+
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Timster-Lipkens_java-project-71&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Timster-Lipkens_java-project-71)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Timster-Lipkens_java-project-71&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Timster-Lipkens_java-project-71)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Timster-Lipkens_java-project-71&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=Timster-Lipkens_java-project-71)
