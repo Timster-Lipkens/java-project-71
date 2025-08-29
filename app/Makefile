@@ -7,6 +7,9 @@ run-dist:
 check-updates:
 	./gradlew dependencyUpdates
 
+report:
+	./gradlew jacocoTestReport
+
 lint:
 	./gradlew checkstyleMain
 
