@@ -15,7 +15,15 @@ sonar {
     properties {
         property("sonar.projectKey", "Timster-Lipkens_java-project-71")
         property("sonar.organization", "timster-lipkens")
-        //property("sonar.host.url", "https://sonarcloud.io") //как это ранее сюда попало?
+        //property("sonar.host.url", "https://sonarcloud.io") //от эталона?
+    }
+}
+
+tasks.jacocoTestReport {
+    reports {
+        xml.required.set(true)
+        //html.required.set(true) //ИИ
+        //html.outputLocation = layout.buildDirectory.dir("jacocoHtml") //Градле
     }
 }
 
